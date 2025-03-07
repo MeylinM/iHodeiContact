@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import HodeiContact from "./screens/HodeiContact";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+/**
+ * Componente principal de la aplicación.
+ * 
+ * Este componente renderiza la pantalla principal `HodeiContact`, que contiene
+ * los botones para redirigir a los usuarios a diferentes enlaces.
+ * 
+ * @returns {JSX.Element} El componente `HodeiContact` renderizado.
+ */
+const App = () => {
+  return <HodeiContact />;
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
