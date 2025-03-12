@@ -17,19 +17,60 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
+  infoButton: {
+    position: "absolute",
+    top: 30, // Espacio desde arriba
+    right: 5, // Espacio desde la derecha
+    padding: 10,
+  },
+
+  webIcon:{
+    position: "absolute",
+    top: 25, // Espacio desde arriba
+    left: 5, // Espacio desde la derecha
+    padding: 10,
+    width: 40.5,
+    height: 28.5,
+  },
   /**
    * Estilo para la imagen del encabezado.
    * La imagen se coloca de manera absoluta, ocupando un ancho mayor y ajustándose a la altura deseada.
    */
   headerImage: {
     position: "absolute", 
-    top: 0, 
-    width: "112%", 
-    height: 300, 
+    top: 20, 
+    width: "155", 
+    height: 150, 
     resizeMode: "cover", 
     marginBottom: 20, 
   },
 
+  welcomeContainer: {
+    alignItems: "center",
+    marginTop: 10, // Ajusta el espacio superior
+    marginBottom: 15, // Espacio debajo del texto
+    paddingHorizontal: 20, // Para evitar que el texto se salga en pantallas pequeñas
+  },
+  welcomeTitle: {
+    fontSize: 22,
+    fontFamily: "Poppins",
+    fontWeight: "bold",
+    color: "#044F8B",
+    textAlign: "center",
+    marginBottom: 10, // Espacio entre el título y la descripción
+  },
+  welcomeDescription: {
+    fontSize: 18,
+    fontFamily: "Montserrat",
+    color: "#044F8B",
+    textAlign: "center",
+    lineHeight: 25, // Espaciado entre líneas
+  },
+  boldText: {
+    fontWeight: "bold",
+    color: "#0175BE", // Azul vibrante para resaltar palabras clave
+  },
+  
   /**
    * Estilo para la disposición de los elementos en cuadrícula.
    * Organiza los elementos en filas y permite que se ajusten cuando no haya suficiente espacio.
@@ -37,9 +78,8 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    justifyContent: "center",
     width: "100%",
-    marginTop: 160,
   },
 
   /**
@@ -47,25 +87,18 @@ const styles = StyleSheet.create({
    * Estas tarjetas tienen un color de fondo, padding, bordes redondeados y un tamaño específico.
    */
   card: {
-    backgroundColor: "#044F8B",
-    padding: 20,
+    backgroundColor: "#D7E7FA",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    margin: 28,
-    width: 120.36, 
-    height: 120.36,
+    width: 150, 
+    height: 150,
   },
 
-  /**
-   * Estilo para el texto dentro de las tarjetas.
-   * El texto está centrado y tiene un color contrastante con el fondo de la tarjeta.
-   */
-  text: {
-    color: "#D7E7FA",
-    marginTop: 1,
-    fontWeight: "bold",
-    textAlign: "center",
+  /** Estilo para los iconos de las funciones principales de la app */
+  icon: {
+    width: 120,
+    height: 120,
   },
 
   /**
@@ -80,14 +113,18 @@ const styles = StyleSheet.create({
    * Estilo para la sección de iconos sociales en la parte inferior.
    * Los iconos se organizan en fila y se ajustan para diferentes tamaños de pantalla.
    */
-  socials: {
-    flexDirection: "row",
-    marginTop: 50,
-    width: "90%",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
-    position: "absolute",
+  socialIcons: {
+    position: "absolute", 
     bottom: 60,
+    flexDirection: "row",
+    justifyContent: "center",
+
+  },
+
+  socials: {
+    width: 45,
+    height: 45,
+    marginHorizontal: 5,
   },
 
   /**
@@ -95,10 +132,9 @@ const styles = StyleSheet.create({
    * El pie de página contiene el texto que aparece en la parte inferior de la pantalla.
    */
   footer: {
+    width: 101.5,
+    height: 25,
     marginTop: 20,
-    color: "#044F8B",
-    fontWeight: "bold",
-    fontSize: 18,
     position: "absolute",
     bottom: 20,
   },

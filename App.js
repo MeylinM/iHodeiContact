@@ -1,16 +1,21 @@
 import React from "react";
-import HodeiContact from "./screens/HodeiContact";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Provider as PaperProvider } from "react-native-paper";
+import SplashScreen from "./screens/SplashScreen"; // Importamos el Splash Screen
+import HomeScreen from "./screens/HodeiContact"; // Importa la pantalla principal
 
-/**
- * Componente principal de la aplicación.
- * 
- * Este componente renderiza la pantalla principal `HodeiContact`, que contiene
- * los botones para redirigir a los usuarios a diferentes enlaces.
- * 
- * @returns {JSX.Element} El componente `HodeiContact` renderizado.
- */
-const App = () => {
-  return <HodeiContact />;
-};
+const Stack = createStackNavigator();
 
-export default App;
+export default function App() {
+  return (
+    <PaperProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Splash" component={SplashScreen} />
+          <Stack.Screen name="HodeiContact" component={HomeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
+  );
+}
