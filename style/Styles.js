@@ -19,15 +19,15 @@ const styles = StyleSheet.create({
 
   infoButton: {
     position: "absolute",
-    top: 30, // Espacio desde arriba
+    top: 35, // Espacio desde arriba
     right: 5, // Espacio desde la derecha
     padding: 10,
   },
 
   webIcon:{
     position: "absolute",
-    top: 25, // Espacio desde arriba
-    left: 5, // Espacio desde la derecha
+    top: 30, // Espacio desde arriba
+    left: 10, // Espacio desde la derecha
     padding: 10,
     width: 40.5,
     height: 28.5,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
    */
   headerImage: {
     position: "absolute", 
-    top: 20, 
+    top: 35, 
     width: "155", 
     height: 150, 
     resizeMode: "cover", 
