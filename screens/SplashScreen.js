@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { View, Image } from "react-native";
 import styles from "../style/SplashScreenStyles"; // Importamos los estilos
 
+
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     // Simula un tiempo de carga antes de ir a la pantalla principal

@@ -1,28 +1,40 @@
 {
   "expo": {
-    "name": "ihodei_contact",
-    "slug": "ihodei_contact",
+    "name": "iHodei Contact",
+    "slug": "ihodeicontact",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Icono-ihodei-Contact.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#D7E7FA"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.ihodei.contact",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Icono-ihodei-Contact.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ihodei.contacto",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/Icono-ihodei-Contact.png"
+    },
+    "owner": "hodeicloud",
+    "extra": {
+      "eas": {
+        "projectId": "e5e731be-864f-438c-9a51-f9645008daa4"
+      }
     }
   }
 }

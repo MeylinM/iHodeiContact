@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
 import InfoIcon from "react-native-vector-icons/Entypo";
-import IconSimple from "react-native-vector-icons/SimpleLineIcons";
-import Icon from "react-native-vector-icons/FontAwesome";
-import TikTok from "react-native-vector-icons/Ionicons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faXTwitter, faTeamspeak } from "@fortawesome/free-brands-svg-icons";
 import styles from "../style/Styles"; // Importamos los estilos desde la carpeta styles
 import InfoModal from "../components/InfoModal"; // Importamos el componente InfoModal
 
@@ -41,6 +36,7 @@ const HodeiContact = () => {
     tiktok: "https://www.tiktok.com/@ihodeicloud",
     x: "https://x.com/CloudHodei",
     youtube: "https://www.youtube.com/channel/UCXu9csa1KbvWv62vx7cCsVA",
+    secret:"https://cloud.hodeicloud.com/",
   };
 
   /**
@@ -87,10 +83,14 @@ const HodeiContact = () => {
       />
 
       {/* HEADER FIJO */}
+      <TouchableOpacity
+          onPress={() => Linking.openURL(socialLinks.secret)}
+        >
       <Image
         source={require("../assets/header.png")}
         style={styles.headerImage}
       />
+      </TouchableOpacity>
       {/* Contenedor de Bienvenida */}
       <View style={styles.welcomeContainer}>
         <Text style={styles.welcomeTitle}>¡Bienvenido a iHodei Contact!</Text>
@@ -213,12 +213,6 @@ const HodeiContact = () => {
           />
         </TouchableOpacity>
       </View>
-
-      {/* Pie de Página */}
-      <Image
-        source={require("../assets/Letras-iHODEIoscuroRGB.png")}
-        style={styles.footer}
-      />
     </View>
   );
 };

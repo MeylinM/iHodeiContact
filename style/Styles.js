@@ -1,142 +1,114 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
-/**
- * Estilos generales para la aplicación.
- * Define la apariencia y disposición de los componentes visuales.
- */
+// Obtener dimensiones de la pantalla
+const { width, height } = Dimensions.get("window");
+
+// Detectar si el dispositivo es una tablet (usamos 600px como referencia)
+const isTablet = width > 600;
+
 const styles = StyleSheet.create({
-  /**
-   * Estilo para el contenedor principal de la aplicación.
-   * Se asegura de que los elementos estén centrados y con un fondo de color.
-   */
   container: {
     flex: 1,
     backgroundColor: "#D7E7FA",
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
+    padding: isTablet ? 40 : 20, // Más espacio en tablets
   },
 
   infoButton: {
     position: "absolute",
-    top: 35, // Espacio desde arriba
-    right: 5, // Espacio desde la derecha
+    top: height * (isTablet ? 0.04 : 0.05), // Baja un poco en tablets
+    right: width * 0.02,
     padding: 10,
   },
 
-  webIcon:{
+  webIcon: {
     position: "absolute",
-    top: 30, // Espacio desde arriba
-    left: 10, // Espacio desde la derecha
-    padding: 10,
-    width: 40.5,
-    height: 28.5,
+    top: height * (isTablet ? 0.025 : 0.032),
+    left: width * 0.02,
+    width: width * (isTablet ? 0.07 : 0.1), // Icono más pequeño en tablets
+    height: height * (isTablet ? 0.04 : 0.05),
+    resizeMode: "contain",
   },
-  /**
-   * Estilo para la imagen del encabezado.
-   * La imagen se coloca de manera absoluta, ocupando un ancho mayor y ajustándose a la altura deseada.
-   */
+
   headerImage: {
-    position: "absolute", 
-    top: 35, 
-    width: "155", 
-    height: 150, 
-    resizeMode: "cover", 
-    marginBottom: 20, 
+    marginTop: height * (isTablet ? -0.05 : -0.09), // Ajuste fino para tablets
+    width: width * (isTablet ? 0.4 : 0.5), // Reduce en tablets
+    height: height * (isTablet ? 0.12 : 0.15),
+    resizeMode: "contain",
+    marginBottom: 20,
   },
 
   welcomeContainer: {
     alignItems: "center",
-    marginTop: 10, // Ajusta el espacio superior
-    marginBottom: 15, // Espacio debajo del texto
-    paddingHorizontal: 20, // Para evitar que el texto se salga en pantallas pequeñas
+    marginTop: height * 0.02,
+    marginBottom: height * 0.02,
+    paddingHorizontal: width * 0.05,
   },
+
   welcomeTitle: {
-    fontSize: 22,
+    fontSize: width * (isTablet ? 0.045 : 0.055),
     fontFamily: "Poppins",
     fontWeight: "bold",
     color: "#044F8B",
     textAlign: "center",
-    marginBottom: 10, // Espacio entre el título y la descripción
+    marginBottom: height * 0.01,
   },
+
   welcomeDescription: {
-    fontSize: 18,
+    fontSize: width * (isTablet ? 0.035 : 0.045),
     fontFamily: "Montserrat",
     color: "#044F8B",
     textAlign: "center",
-    lineHeight: 25, // Espaciado entre líneas
+    lineHeight: height * 0.03,
   },
+
   boldText: {
     fontWeight: "bold",
-    color: "#0175BE", // Azul vibrante para resaltar palabras clave
+    color: "#0175BE",
   },
-  
-  /**
-   * Estilo para la disposición de los elementos en cuadrícula.
-   * Organiza los elementos en filas y permite que se ajusten cuando no haya suficiente espacio.
-   */
+
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     width: "100%",
+    marginTop: height * 0.03,
+    gap: height * (isTablet ? 0.03 : 0.02), // Mayor separación en tablets
   },
 
-  /**
-   * Estilo para las tarjetas dentro de la cuadrícula.
-   * Estas tarjetas tienen un color de fondo, padding, bordes redondeados y un tamaño específico.
-   */
   card: {
     backgroundColor: "#D7E7FA",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    width: 150, 
-    height: 150,
+    width: width * (isTablet ? 0.3 : 0.38), // Más pequeños en tablets
+    height: width * (isTablet ? 0.3 : 0.38),
   },
 
-  /** Estilo para los iconos de las funciones principales de la app */
   icon: {
-    width: 120,
-    height: 120,
+    width: width * (isTablet ? 0.25 : 0.35), // Iconos más pequeños en tablets
+    height: width * (isTablet ? 0.25 : 0.35),
+    resizeMode: "contain",
   },
 
-  /**
-   * Estilo para una tarjeta seleccionada.
-   * Cuando una tarjeta está seleccionada, cambia su color de fondo.
-   */
   selectedCard: {
-    backgroundColor: "#F39C12", 
+    backgroundColor: "#F39C12",
   },
 
-  /**
-   * Estilo para la sección de iconos sociales en la parte inferior.
-   * Los iconos se organizan en fila y se ajustan para diferentes tamaños de pantalla.
-   */
   socialIcons: {
-    position: "absolute", 
-    bottom: 60,
+    marginTop: height * (isTablet ? 0.05 : 0.01),
     flexDirection: "row",
     justifyContent: "center",
-
+    bottom: height * (isTablet ? -0.05 : -0.09), // Ajuste fino
   },
 
   socials: {
-    width: 45,
-    height: 45,
-    marginHorizontal: 5,
-  },
-
-  /**
-   * Estilo para el pie de página de la aplicación.
-   * El pie de página contiene el texto que aparece en la parte inferior de la pantalla.
-   */
-  footer: {
-    width: 101.5,
-    height: 25,
-    marginTop: 20,
-    position: "absolute",
-    bottom: 20,
+    width: width * (isTablet ? 0.08 : 0.1), // Iconos de redes más pequeños en tablets
+    height: width * (isTablet ? 0.08 : 0.1),
+    marginHorizontal: width * 0.02,
+    resizeMode: "contain",
   },
 });
+
 export default styles;

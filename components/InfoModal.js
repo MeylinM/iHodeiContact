@@ -22,7 +22,6 @@ const InfoModal = ({ visible, onClose }) => {
           {/* Descripción */}
           <Text style={styles.modalText}>
             iHodei Contact es tu acceso directo a nuestros servicios en la nube y soporte técnico.
-            Nuestro objetivo es ofrecerte una experiencia rápida, sencilla y eficiente para gestionar todo en un solo lugar.
           </Text>
 
           {/* Lista de funcionalidades */}
@@ -47,7 +46,6 @@ const InfoModal = ({ visible, onClose }) => {
 
           {/* Redes sociales */}
           <View style={styles.socialIcons}>
-            <Image source={require("../assets/icon-web.png")} style={styles.webIcon} />
             <Image source={require("../assets/icon-facebook.png")} style={styles.socialIcon} />
             <Image source={require("../assets/icon-instagram.png")} style={styles.socialIcon} />
             <Image source={require("../assets/icon-linkedin.png")} style={styles.socialIcon} />
