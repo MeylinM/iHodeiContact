@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import InfoIcon from "react-native-vector-icons/Entypo";
 import styles from "../style/Styles"; // Importamos los estilos desde la carpeta styles
-import InfoModal from "../components/InfoModal"; // Importamos el componente InfoModal
-
+import FooterSocial from "../components/FooterSocial";
+import Header from "../components/Header";
+import InfoIcon from "react-native-vector-icons/Entypo";
+import InfoModal from "../components/InfoModalMain"; // Importamos el componente InfoModal
 /**
  * Componente HodeiContact.
  *
@@ -26,18 +27,6 @@ const HodeiContact = () => {
     soporte: "https://api.whatsapp.com/send?phone=34602216188",
     exocloud: "https://intranet.exocloud.es/user/login",
     hodeicloud: "https://intranet.hodeicloud.com/user/login",
-  };
-
-  // Links de redes sociales
-  const socialLinks = {
-    facebook: "https://www.facebook.com/iHodei/",
-    instagram: "https://www.instagram.com/ihodeicloud/",
-    linkedin: "https://es.linkedin.com/company/ihodeicloud",
-    website: "https://ihodei.com/",
-    tiktok: "https://www.tiktok.com/@ihodeicloud",
-    x: "https://x.com/CloudHodei",
-    youtube: "https://www.youtube.com/channel/UCXu9csa1KbvWv62vx7cCsVA",
-    secret: "https://cloud.hodeicloud.com/",
   };
 
   /**
@@ -66,18 +55,7 @@ const HodeiContact = () => {
 
   return (
     <View style={styles.container}>
-
-      {/* Botón de ir a la página web*/}
-      <TouchableOpacity
-        onPress={() => Linking.openURL(socialLinks.website)}
-        style={styles.webIcon}
-      >
-        <Image
-          source={require("../assets/icon-web.png")}
-          style={styles.webIcon}
-        />
-      </TouchableOpacity>
-
+      <Header />
       {/* Botón de información */}
       <TouchableOpacity
         style={styles.infoButton}
@@ -91,14 +69,6 @@ const HodeiContact = () => {
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
       />
-
-      {/* Imagen logo de la empresa y botón secreto */}
-      <TouchableOpacity onPress={() => Linking.openURL(socialLinks.secret)}>
-        <Image
-          source={require("../assets/header.png")}
-          style={styles.headerImage}
-        />
-      </TouchableOpacity>
 
       {/* Contenedor de Bienvenida */}
       <View style={styles.welcomeContainer}>
@@ -198,46 +168,7 @@ const HodeiContact = () => {
       </View>
 
       {/* Contenedor Redes Sociales */}
-      <View style={styles.socialIcons}>
-        {/* Iconos de Redes Sociales */}
-
-        <TouchableOpacity onPress={() => Linking.openURL(socialLinks.facebook)}>
-          <Image
-            source={require("../assets/icon-facebook.png")}
-            style={styles.socials}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => Linking.openURL(socialLinks.instagram)}
-        >
-          <Image
-            source={require("../assets/icon-instagram.png")}
-            style={styles.socials}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => Linking.openURL(socialLinks.linkedin)}>
-          <Image
-            source={require("../assets/icon-linkedin.png")}
-            style={styles.socials}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => Linking.openURL(socialLinks.tiktok)}>
-          <Image
-            source={require("../assets/icon-tiktok.png")}
-            style={styles.socials}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => Linking.openURL(socialLinks.youtube)}>
-          <Image
-            source={require("../assets/icon-youtube.png")}
-            style={styles.socials}
-          />
-        </TouchableOpacity>
-      </View>
+      <FooterSocial />
     </View>
   );
 };
