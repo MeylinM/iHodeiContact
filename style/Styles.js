@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#D7E7FA",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     padding: isTablet ? 40 : 20, // Más espacio en tablets
   },
 
@@ -32,17 +32,17 @@ const styles = StyleSheet.create({
   },
 
   headerImage: {
-    marginTop: height * (isTablet ? -0.05 : -0.09), // Ajuste fino para tablets
+    marginTop: height * (isTablet ? 0.001 : 0.03), // Ajuste fino para tablets
     width: width * (isTablet ? 0.4 : 0.5), // Reduce en tablets
     height: height * (isTablet ? 0.12 : 0.15),
     resizeMode: "contain",
-    marginBottom: 20,
+    marginBottom: 10,
   },
 
   welcomeContainer: {
     alignItems: "center",
-    marginTop: height * 0.02,
-    marginBottom: height * 0.02,
+    marginTop: height * 0.00001,
+    marginBottom: height * 0.00002,
     paddingHorizontal: width * 0.05,
   },
 
@@ -73,8 +73,10 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     width: "100%",
-    marginTop: height * 0.03,
-    gap: height * (isTablet ? 0.03 : 0.02), // Mayor separación en tablets
+    marginTop: height * 0.001,
+    marginBottom: height * 0.03,
+    rowGap: isTablet ? 1 : 4,
+    gap: height * (isTablet ? 0.04 : 0.01), // Mayor separación en tablets
   },
 
   card: {
@@ -82,13 +84,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    width: width * (isTablet ? 0.3 : 0.38), // Más pequeños en tablets
-    height: width * (isTablet ? 0.3 : 0.38),
+    width: width * (isTablet ? 0.28 : 0.38), // Más pequeños en tablets
+    height: width * (isTablet ? 0.28 : 0.38),
   },
 
-  icon: {
-    width: width * (isTablet ? 0.25 : 0.35), // Iconos más pequeños en tablets
-    height: width * (isTablet ? 0.25 : 0.35),
+  icon_image: {
+    width: width * (isTablet ? 0.28 : 0.34), // Iconos más pequeños en tablets
+    height: width * (isTablet ? 0.28 : 0.34),
     resizeMode: "contain",
   },
 
@@ -97,10 +99,13 @@ const styles = StyleSheet.create({
   },
 
   socialIcons: {
-    marginTop: height * (isTablet ? 0.05 : 0.01),
+    position: "absolute",
+    bottom: isTablet ? 30 : 20, // margen inferior seguro en ambos
     flexDirection: "row",
     justifyContent: "center",
-    bottom: height * (isTablet ? -0.05 : -0.09), // Ajuste fino
+    alignItems: "center",
+    width: "100%",
+    paddingHorizontal: 20,
   },
 
   socials: {

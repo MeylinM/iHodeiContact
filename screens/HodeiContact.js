@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import InfoIcon from "react-native-vector-icons/Entypo";
 import styles from "../style/Styles"; // Importamos los estilos desde la carpeta styles
 import InfoModal from "../components/InfoModal"; // Importamos el componente InfoModal
@@ -36,7 +37,7 @@ const HodeiContact = () => {
     tiktok: "https://www.tiktok.com/@ihodeicloud",
     x: "https://x.com/CloudHodei",
     youtube: "https://www.youtube.com/channel/UCXu9csa1KbvWv62vx7cCsVA",
-    secret:"https://cloud.hodeicloud.com/",
+    secret: "https://cloud.hodeicloud.com/",
   };
 
   /**
@@ -61,11 +62,20 @@ const HodeiContact = () => {
   const handlePressOut = () => {
     setSelectedCard(null);
   };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => Linking.openURL(socialLinks.website)} style={styles.webIcon} >
-        <Image source={require("../assets/icon-web.png")} style={styles.webIcon} />
+
+      {/* Botón de ir a la página web*/}
+      <TouchableOpacity
+        onPress={() => Linking.openURL(socialLinks.website)}
+        style={styles.webIcon}
+      >
+        <Image
+          source={require("../assets/icon-web.png")}
+          style={styles.webIcon}
+        />
       </TouchableOpacity>
 
       {/* Botón de información */}
@@ -82,15 +92,14 @@ const HodeiContact = () => {
         onClose={() => setModalVisible(false)}
       />
 
-      {/* HEADER FIJO */}
-      <TouchableOpacity
-          onPress={() => Linking.openURL(socialLinks.secret)}
-        >
-      <Image
-        source={require("../assets/header.png")}
-        style={styles.headerImage}
-      />
+      {/* Imagen logo de la empresa y botón secreto */}
+      <TouchableOpacity onPress={() => Linking.openURL(socialLinks.secret)}>
+        <Image
+          source={require("../assets/header.png")}
+          style={styles.headerImage}
+        />
       </TouchableOpacity>
+
       {/* Contenedor de Bienvenida */}
       <View style={styles.welcomeContainer}>
         <Text style={styles.welcomeTitle}>¡Bienvenido a iHodei Contact!</Text>
@@ -119,7 +128,7 @@ const HodeiContact = () => {
         >
           <Image
             source={require("../assets/icon-contact.png")}
-            style={[styles.icon]}
+            style={[styles.icon_image]}
           />
         </TouchableOpacity>
 
@@ -135,7 +144,7 @@ const HodeiContact = () => {
         >
           <Image
             source={require("../assets/icon-soporte.png")}
-            style={[styles.icon]}
+            style={[styles.icon_image]}
           />
         </TouchableOpacity>
 
@@ -151,7 +160,7 @@ const HodeiContact = () => {
         >
           <Image
             source={require("../assets/icon-exocloud.png")}
-            style={[styles.icon]}
+            style={[styles.icon_image]}
           />
         </TouchableOpacity>
 
@@ -167,12 +176,28 @@ const HodeiContact = () => {
         >
           <Image
             source={require("../assets/icon-hodeicloud.png")}
-            style={[styles.icon]}
+            style={[styles.icon_image]}
+          />
+        </TouchableOpacity>
+
+        {/* Tarjeta de foro noticias*/}
+        <TouchableOpacity
+          style={[
+            styles.card,
+            selectedCard === "HodeiNews" && styles.selectedCard,
+          ]}
+          onPressIn={() => handlePressIn("HodeiNews")}
+          onPressOut={handlePressOut}
+          onPress={() => navigation.navigate("HodeiNews")}
+        >
+          <Image
+            source={require("../assets/icon-more.png")}
+            style={[styles.icon_image]}
           />
         </TouchableOpacity>
       </View>
 
-      {/* Redes Sociales */}
+      {/* Contenedor Redes Sociales */}
       <View style={styles.socialIcons}>
         {/* Iconos de Redes Sociales */}
 
