@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     marginTop: height * 0.001,
-    marginBottom: height * 0.03,
+    marginBottom: height * (isTablet ? 0.1 : 0.12),
     rowGap: isTablet ? 1 : 4,
     gap: height * (isTablet ? 0.04 : 0.01), // Mayor separación en tablets
   },
@@ -100,12 +100,15 @@ const styles = StyleSheet.create({
 
   socialIcons: {
     position: "absolute",
-    bottom: isTablet ? 30 : 20, // margen inferior seguro en ambos
+    bottom: isTablet ? 1 : 0,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,
+    backgroundColor: "#D7E7FA",
+    paddingVertical: 10,
+
   },
 
   socials: {

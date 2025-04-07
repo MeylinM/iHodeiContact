@@ -8,12 +8,6 @@ export default StyleSheet.create({
     backgroundColor: "#D7E7FA",
     alignItems: "center",
   },
-  logo: {
-    width: width * 0.35,
-    height: 80,
-    marginTop: 30,
-    resizeMode: "contain",
-  },
   title: {
     fontSize: 26,
     fontWeight: "bold",
@@ -24,7 +18,7 @@ export default StyleSheet.create({
     fontSize: 14,
     color: "#000",
     marginTop: 5,
-    marginBottom: 10,
+    marginBottom: 5,
     paddingHorizontal: 20,
     textAlign: "center",
   },
@@ -38,7 +32,7 @@ export default StyleSheet.create({
     width: width * 0.9,
     height: width * 0.9,
     resizeMode: "cover",
-    backgroundColor: "#0175BE",
+    backgroundColor: "#d7e7fa",
   },
   mediaPlaceholder: {
     width: width * 0.9,
@@ -51,26 +45,22 @@ export default StyleSheet.create({
     padding: 20,
   },
   downloadButton: {
-    marginTop: 15,
-    marginBottom: 10,
+    marginTop: 20,
+    backgroundColor: "#F39C12",
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 8,
   },
+  
   downloadText: {
-    fontSize: 18,
+    color: "#fff",
     fontWeight: "bold",
-    color: "#000",
+    fontSize: 16,
+    textAlign: "center",
   },
-  socialIcons: {
-    position: "absolute",
-    bottom: 10,
-    flexDirection: "row",
-    justifyContent: "center",
+  
+  scrollContent: {
     alignItems: "center",
-    width: "100%",
-    gap: 12,
-  },
-  icon: {
-    width: 35,
-    height: 35,
-    resizeMode: "contain",
-  },
+    paddingBottom: 100, // Para dejar espacio al footer
+  }
 });

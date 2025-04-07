@@ -9,40 +9,29 @@ import {
   Linking,
   ScrollView,
 } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import styles from "../style/HodeiPostStyle";
 import FooterSocial from "../components/FooterSocial";
 import Header from "../components/Header";
 import InfoIcon from "react-native-vector-icons/Entypo";
 import InfoModal from "../components/InfoModalPost";
 import stylesGlobal from "../style/Styles";
-
+import { Video } from "expo-av";
 
 const { width } = Dimensions.get("window");
 
-// Simulación de una única publicación con múltiples imágenes/videos
-const publication = {
-  id: "1",
-  title: "Título Publicación",
-  description: "Descripción de la publicación.",
-  media: [
-    { type: "image", content: require("../assets/publicacion1.png") },
-    { type: "image", content: require("../assets/publicacion2.png") },
-    // { type: "video", content: require("../assets/demo.mp4") },
-  ],
-  pdf: "https://tusitio.com/archivo.pdf", // Opcional: coméntalo para ocultar botón
-};
+const HodeiPost = () => {
+  const route = useRoute();
+  const { publication } = route.params; // 👈 Aquí obtenemos la publicación enviada
 
-const HodeiNews = () => {
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const flatListRef = useRef();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleScroll = (event) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentMediaIndex(index);
   };
-
-  // Estado para el modal de información
-  const [modalVisible, setModalVisible] = useState(false);
 
   const openPDF = () => {
     if (publication.pdf) {
@@ -53,7 +42,6 @@ const HodeiNews = () => {
   return (
     <View style={styles.container}>
       <Header />
-      {/* Botón de información */}
       <TouchableOpacity
         style={stylesGlobal.infoButton}
         onPress={() => setModalVisible(true)}
@@ -61,46 +49,55 @@ const HodeiNews = () => {
         <InfoIcon name="info" size={35} color="#F39C12" />
       </TouchableOpacity>
 
-      {/* Modal de información */}
       <InfoModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
       />
-      {/* Texto fijo */}
-      <Text style={styles.title}>{publication.title}</Text>
-      <Text style={styles.description}>{publication.description}</Text>
 
-      {/* Carrusel de imagen o video */}
-      <FlatList
-        data={publication.media}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        ref={flatListRef}
-        onScroll={handleScroll}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.slide}>
-            {item.type === "image" ? (
-              <Image source={item.content} style={styles.media} />
-            ) : (
-              <Text style={styles.mediaPlaceholder}>[Video aquí]</Text>
-            )}
-          </View>
+      <ScrollView
+        style={{ flex: 1, width: "100%" }}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={styles.title}>{publication.title}</Text>
+        <Text style={styles.description}>{publication.description}</Text>
+
+        <FlatList
+          data={publication.media}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          ref={flatListRef}
+          onScroll={handleScroll}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.slide}>
+              {item.type === "image" ? (
+                <Image source={item.content} style={styles.media} />
+              ) : (
+                <Video
+                  source={item.content}
+                  style={styles.media}
+                  useNativeControls
+                  resizeMode="contain"
+                  isLooping
+                  shouldPlay
+                />
+              )}
+            </View>
+          )}
+        />
+
+        {publication.pdf && (
+          <TouchableOpacity onPress={openPDF} style={styles.downloadButton}>
+            <Text style={styles.downloadText}>Descargar</Text>
+          </TouchableOpacity>
         )}
-      />
+      </ScrollView>
 
-      {/* Botón de descarga si hay PDF */}
-      {publication.pdf && (
-        <TouchableOpacity onPress={openPDF} style={styles.downloadButton}>
-          <Text style={styles.downloadText}>Descargar</Text>
-        </TouchableOpacity>
-      )}
-
-      {/* Redes sociales */}
       <FooterSocial />
     </View>
   );
 };
 
-export default HodeiNews;
+export default HodeiPost;
