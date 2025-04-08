@@ -61,6 +61,12 @@ export default StyleSheet.create({
   
   scrollContent: {
     alignItems: "center",
-    paddingBottom: 100, // Para dejar espacio al footer
-  }
+    justifyContent: "flex-start",
+  },
+  loader: {
+    position: "absolute",
+    top: "45%",
+    alignSelf: "center",
+    zIndex: 2,
+  }, 
 });

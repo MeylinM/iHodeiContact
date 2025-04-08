@@ -17,6 +17,7 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   grid: {
+    width: "100%", 
     paddingBottom: 100,
     paddingHorizontal: 10,
     justifyContent: 'space-between',
@@ -48,21 +49,5 @@ export default StyleSheet.create({
     width: 35,
     height: 35,
     resizeMode: 'contain',
-  },
-  videoWrapper: {
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  
-  videoLabel: {
-    position: "absolute",
-    fontSize: 32,
-    color: "#fff",
-    fontWeight: "bold",
-    opacity: 0.8,
-  },
-  
+  },    
 });

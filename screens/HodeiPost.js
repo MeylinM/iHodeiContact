@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Linking,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import styles from "../style/HodeiPostStyle";
@@ -16,29 +17,46 @@ import Header from "../components/Header";
 import InfoIcon from "react-native-vector-icons/Entypo";
 import InfoModal from "../components/InfoModalPost";
 import stylesGlobal from "../style/Styles";
-import { Video } from "expo-av";
-
+import { obtenerPublicacionCompleta } from "../servidor/HodeiServer";
+import MediaItem from "../components/MediaItem";
+import { StatusBar } from "expo-status-bar";
 const { width } = Dimensions.get("window");
 
 const HodeiPost = () => {
   const route = useRoute();
-  const { publication } = route.params; // 👈 Aquí obtenemos la publicación enviada
+  const { id } = route.params;
+  console.log("ID recibido:", id);
 
-  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
-  const flatListRef = useRef();
+  const [publication, setPublication] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const flatListRef = useRef();
+
+  useEffect(() => {
+    const cargar = async () => {
+      const data = await obtenerPublicacionCompleta(id);
+      setPublication(data);
+    };
+    cargar();
+  }, [id]);
 
   const handleScroll = (event) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
-    setCurrentMediaIndex(index);
   };
-
-  const openPDF = () => {
-    if (publication.pdf) {
-      Linking.openURL(publication.pdf);
+  const openPDF = (url) => {
+    if (url) {
+      Linking.openURL(url);
     }
   };
 
+  if (!publication) {
+    return (
+      <View style={styles.container}>
+        <Header />
+        <ActivityIndicator size="large" color="#044F8B" style={{ marginTop: 60 }} />
+        <FooterSocial />
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <Header />
@@ -49,10 +67,7 @@ const HodeiPost = () => {
         <InfoIcon name="info" size={35} color="#F39C12" />
       </TouchableOpacity>
 
-      <InfoModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-      />
+      <InfoModal visible={modalVisible} onClose={() => setModalVisible(false)} />
 
       <ScrollView
         style={{ flex: 1, width: "100%" }}
@@ -70,31 +85,24 @@ const HodeiPost = () => {
           ref={flatListRef}
           onScroll={handleScroll}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.slide}>
-              {item.type === "image" ? (
-                <Image source={item.content} style={styles.media} />
-              ) : (
-                <Video
-                  source={item.content}
-                  style={styles.media}
-                  useNativeControls
-                  resizeMode="contain"
-                  isLooping
-                  shouldPlay
-                />
-              )}
-            </View>
-          )}
-        />
+          renderItem={({ item }) => <MediaItem item={item}/>}
+          />
 
-        {publication.pdf && (
-          <TouchableOpacity onPress={openPDF} style={styles.downloadButton}>
-            <Text style={styles.downloadText}>Descargar</Text>
-          </TouchableOpacity>
+        {publication.pdfs && publication.pdfs.length > 0 && (
+          <>
+            <Text style={[styles.description, { marginTop: 20 }]}>Material complementario:</Text>
+            {publication.pdfs.map((pdf, idx) => (
+              <TouchableOpacity
+                key={idx}
+                onPress={() => openPDF(pdf.url)}
+                style={styles.downloadButton}
+              >
+                <Text style={styles.downloadText}>Descargar PDF {idx + 1}</Text>
+              </TouchableOpacity>
+            ))}
+          </>
         )}
       </ScrollView>
-
       <FooterSocial />
     </View>
   );

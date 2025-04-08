@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 
   headerImage: {
-    marginTop: height * (isTablet ? 0.001 : 0.03), // Ajuste fino para tablets
+    marginTop: height * (isTablet ? 0.001 : 0.04), // Ajuste fino para tablets
     width: width * (isTablet ? 0.4 : 0.5), // Reduce en tablets
     height: height * (isTablet ? 0.12 : 0.15),
     resizeMode: "contain",
