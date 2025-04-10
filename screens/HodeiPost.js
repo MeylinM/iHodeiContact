@@ -19,8 +19,19 @@ import InfoModal from "../components/InfoModalPost";
 import stylesGlobal from "../style/Styles";
 import { obtenerPublicacionCompleta } from "../servidor/HodeiServer";
 import MediaItem from "../components/MediaItem";
-import { StatusBar } from "expo-status-bar";
 const { width } = Dimensions.get("window");
+
+/**
+ * Componente que muestra el detalle completo de una publicación seleccionada,
+ * incluyendo título, descripción, contenido multimedia (imágenes/videos)
+ * y enlaces para descargar PDFs asociados.
+ *
+ * @component
+ * @returns {JSX.Element} Pantalla detallada de una publicación con contenido interactivo.
+ *
+ * @example
+ * <HodeiPost />
+ */
 
 const HodeiPost = () => {
   const route = useRoute();
@@ -39,9 +50,17 @@ const HodeiPost = () => {
     cargar();
   }, [id]);
 
+    /**
+   * Maneja el scroll horizontal en la lista de medios para indicar la posición actual.
+   * @param {Object} event - Evento de scroll.
+   */
   const handleScroll = (event) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
   };
+    /**
+   * Abre un archivo PDF externo en el navegador.
+   * @param {string} url - URL del archivo PDF.
+   */
   const openPDF = (url) => {
     if (url) {
       Linking.openURL(url);

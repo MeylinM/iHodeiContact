@@ -9,6 +9,17 @@ import InfoIcon from "react-native-vector-icons/Entypo";
 import InfoModal from "../components/InfoModalNews";
 import { obtenerPublicacionesPreview } from "../servidor/HodeiServer";
 
+/**
+ * Componente que muestra una lista de noticias en formato de tarjetas.
+ * Permite acceder al detalle de cada publicación mediante navegación.
+ *
+ * @component
+ * @returns {JSX.Element} Pantalla con vista previa de noticias organizadas en tarjetas.
+ *
+ * @example
+ * <HodeiNews />
+ */
+
 const HodeiNews = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [publications, setPublications] = useState([]);
@@ -22,6 +33,11 @@ const HodeiNews = () => {
     cargar();
   }, []);
 
+    /**
+   * Renderiza cada publicación como una tarjeta interactiva.
+   * @param {Object} props - Propiedades de cada item.
+   * @param {Object} props.item - Datos de la publicación individual.
+   */
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.card}
