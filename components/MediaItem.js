@@ -3,6 +3,21 @@ import { View, Image, ActivityIndicator } from "react-native";
 import { Video } from "expo-av";
 import styles from "../style/HodeiPostStyle";
 
+/**
+ * Componente que muestra un elemento multimedia (imagen o vídeo) con un indicador de carga.
+ * Decide automáticamente qué tipo de contenido multimedia mostrar según la propiedad recibida.
+ *
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {Object} props.item - Objeto que contiene información del elemento multimedia.
+ * @param {string} props.item.type - Tipo de multimedia ("image" o "video").
+ * @param {string} props.item.url - URL del archivo multimedia.
+ * @returns {JSX.Element} Elemento multimedia con indicador de carga.
+ *
+ * @example
+ * <MediaItem item={{ type: 'image', url: 'https://example.com/image.jpg' }} />
+ */
+
 const MediaItem = ({ item }) => {
   const [loading, setLoading] = useState(true);
 

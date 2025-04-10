@@ -9,6 +9,17 @@ import HodeiPost from "./screens/HodeiPost"; // Importa la pantalla de posts
 
 const Stack = createStackNavigator();
 
+/**
+ * Componente raíz que inicializa la navegación principal de la aplicación iHodei.
+ * Establece el proveedor de React Native Paper para temas personalizados y navegación con React Navigation.
+ *
+ * @component
+ * @returns {JSX.Element} Estructura principal de navegación y proveedores de contexto.
+ *
+ * @example
+ * <App />
+ */
+
 export default function App() {
   return (
     <PaperProvider>

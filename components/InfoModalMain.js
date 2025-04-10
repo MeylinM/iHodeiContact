@@ -4,6 +4,20 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "../style/InfoModalStyles"; // Importamos los estilos
 import InfoModalBase from "./InfoModalBase"; // Importamos el componente base
 
+/**
+ * Componente que muestra un modal informativo principal con detalles sobre los servicios
+ * ofrecidos por iHodei, funcionalidades específicas y enlaces a redes sociales.
+ *
+ * @component
+ * @param {Object} props - Propiedades del componente.
+ * @param {boolean} props.visible - Controla la visibilidad del modal.
+ * @param {function} props.onClose - Función ejecutada al cerrar el modal.
+ * @returns {JSX.Element} Modal interactivo con información detallada sobre la aplicación.
+ *
+ * @example
+ * <InfoModalMain visible={isModalVisible} onClose={() => setModalVisible(false)} />
+ */
+
 const InfoModalMain = ({ visible, onClose }) => {
   return (
     <Modal
@@ -16,17 +30,22 @@ const InfoModalMain = ({ visible, onClose }) => {
         <View style={styles.modalContent}>
           {/* Botón para cerrar el modal */}
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Icon name="close" size={25} color="#044F8B" style={styles.closeIcon} />
+            <Icon
+              name="close"
+              size={25}
+              color="#044F8B"
+              style={styles.closeIcon}
+            />
           </TouchableOpacity>
           <InfoModalBase />
 
-          {/* Descripción */}
+          {/* Texto descriptivo principal */}
           <Text style={styles.modalText}>
             iHodei Contact es tu acceso directo a nuestros servicios en la nube
             y soporte técnico.
           </Text>
 
-          {/* Lista de funcionalidades */}
+          {/* Lista con características y funcionalidades */}
           <View style={styles.featureList}>
             <View style={styles.featureItem}>
               <Image
@@ -74,7 +93,7 @@ const InfoModalMain = ({ visible, onClose }) => {
             </View>
           </View>
 
-          {/* Redes sociales */}
+          {/* Iconos redes sociales */}
           <View style={styles.socialIcons}>
             <Image
               source={require("../assets/icon-facebook.png")}

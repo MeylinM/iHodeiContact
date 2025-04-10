@@ -9,10 +9,16 @@ import InfoModal from "../components/InfoModalMain"; // Importamos el componente
 /**
  * Componente HodeiContact.
  *
- * Este componente renderiza una interfaz con botones para redirigir a diferentes enlaces de contacto y redes sociales.
- * Incluye tarjetas interactivas para contactar, soporte, y acceder a plataformas ExoCloud y HodeiCloud, además de íconos para redes sociales.
+ * Componente principal para la pantalla de contacto de iHodei.
+ * Ofrece acceso rápido a diferentes servicios mediante tarjetas interactivas,
+ * enlaces directos a soporte, ExoCloud, HodeiCloud, y sección de noticias.
+ *
+ * @component
+ * @returns {JSX.Element} Pantalla interactiva con botones y enlaces de contacto.
+ *
+ * @example
+ * <HodeiContact />
  */
-
 const HodeiContact = () => {
   // Estado para el modal de información
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,23 +36,23 @@ const HodeiContact = () => {
   };
 
   /**
-   * Maneja el clic en las tarjetas y abre el enlace correspondiente.
-   * @param {string} card - Nombre de la tarjeta (contacto, soporte, exocloud, hodeicloud).
+   * Abre el enlace correspondiente cuando se pulsa una tarjeta.
+   * @param {string} card - Nombre identificador de la tarjeta.
    */
   const handlePress = (card) => {
     Linking.openURL(cardLinks[card]);
   };
 
   /**
-   * Maneja el evento cuando se presiona una tarjeta, cambiando el estado de la tarjeta seleccionada.
-   * @param {string} card - Nombre de la tarjeta seleccionada.
+   * Marca visualmente la tarjeta cuando es pulsada.
+   * @param {string} card - Nombre identificador de la tarjeta seleccionada.
    */
   const handlePressIn = (card) => {
     setSelectedCard(card);
   };
 
   /**
-   * Maneja el evento cuando se suelta una tarjeta, restableciendo la selección.
+   * Restablece la selección visual cuando la tarjeta es liberada.
    */
   const handlePressOut = () => {
     setSelectedCard(null);
@@ -167,7 +173,7 @@ const HodeiContact = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Contenedor Redes Sociales */}
+      {/* Footer Redes Sociales */}
       <FooterSocial />
     </View>
   );
