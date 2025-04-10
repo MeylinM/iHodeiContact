@@ -31,6 +31,7 @@ export default StyleSheet.create({
   media: {
     width: width * 0.9,
     height: width * 0.9,
+    marginBottom: 55,
     resizeMode: "cover",
     backgroundColor: "#d7e7fa",
   },

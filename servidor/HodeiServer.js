@@ -1,11 +1,11 @@
-const BASE_URL = "https://ihodeicontact.up.railway.app"; // Reemplázalo con la URL real
+import { CONTENIDO_URL, DRIVE_FILE_BASE,PREVIEW_URL,DATOS_URL } from "../config/config";
 
 //Obtener el preview de las publicaciones
 // Esta función obtiene un preview de las publicaciones desde el servidor
 // y devuelve un array de objetos con id, título e imagen.
 export const obtenerPublicacionesPreview = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/preview`);
+    const response = await fetch(`${PREVIEW_URL}`);
     if (!response.ok) throw new Error("Error al cargar publicaciones");
 
     const data = await response.json();
@@ -14,7 +14,7 @@ export const obtenerPublicacionesPreview = async () => {
     return data.map((item) => ({
       id: item.id,
       title: item.titulo,
-      imgUrl: `https://drive.google.com/uc?id=${item.contenido_id}&export=download`,
+      imgUrl: DRIVE_FILE_BASE(item.contenido_id),
     }));
   } catch (error) {
     console.error("Error en obtenerPublicacionesPreview:", error);
@@ -25,7 +25,7 @@ export const obtenerPublicacionesPreview = async () => {
 //Obtener primera parte de la publicación
 export const obtenerDatosPost = async (id) => {
   try {
-    const res = await fetch(`${BASE_URL}/publicacion/${id}`);
+    const res = await fetch(`${DATOS_URL}/${id}`);
     if (!res.ok) throw new Error("Error al obtener los datos del post");
 
     const data = await res.json();
@@ -45,7 +45,7 @@ export const obtenerDatosPost = async (id) => {
 //Obtener el contenido multimedia de la publicación
 export const obtenerContenidoPost = async (id) => {
   try {
-    const res = await fetch(`${BASE_URL}/contenido/${id}`);
+    const res = await fetch(`${CONTENIDO_URL}/${id}`);
     if (!res.ok) throw new Error("Error al obtener el contenido");
 
     const data = await res.json();
@@ -54,13 +54,13 @@ export const obtenerContenidoPost = async (id) => {
       .filter((item) => item.tipoContenido === "IMG" || item.tipoContenido === "VID")
       .map((item) => ({
         type: item.tipoContenido === "VID" ? "video" : "image",
-        url: `https://drive.google.com/uc?id=${item.id}&export=download`,
+        url: DRIVE_FILE_BASE(item.id),
       }));
-
+      console.log(media.url);
     const pdfs = data
       .filter((item) => item.tipoContenido === "PDF")
       .map((item) => ({
-        url: `https://drive.google.com/uc?id=${item.id}&export=download`,
+        url: DRIVE_FILE_BASE(item.id),
       }));
 
     return { media, pdfs };
