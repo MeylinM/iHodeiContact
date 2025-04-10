@@ -9,10 +9,11 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    textAlign: "center",
     fontSize: 26,
     fontWeight: "bold",
     marginTop: 10,
-    color: "#000",
+    color: "#044F8B",
   },
   description: {
     fontSize: 14,
@@ -20,7 +21,6 @@ export default StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     paddingHorizontal: 20,
-    textAlign: "center",
   },
   slide: {
     width,
@@ -31,6 +31,7 @@ export default StyleSheet.create({
   media: {
     width: width * 0.9,
     height: width * 0.9,
+    marginBottom: 55,
     resizeMode: "cover",
     backgroundColor: "#d7e7fa",
   },
@@ -46,6 +47,7 @@ export default StyleSheet.create({
   },
   downloadButton: {
     marginTop: 20,
+    marginBottom:70,
     backgroundColor: "#F39C12",
     paddingVertical: 10,
     paddingHorizontal: 30,

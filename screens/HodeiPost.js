@@ -90,14 +90,14 @@ const HodeiPost = () => {
 
         {publication.pdfs && publication.pdfs.length > 0 && (
           <>
-            <Text style={[styles.description, { marginTop: 20 }]}>Material complementario:</Text>
+            
             {publication.pdfs.map((pdf, idx) => (
               <TouchableOpacity
                 key={idx}
                 onPress={() => openPDF(pdf.url)}
                 style={styles.downloadButton}
               >
-                <Text style={styles.downloadText}>Descargar PDF {idx + 1}</Text>
+                <Text style={styles.downloadText}>Más Información</Text>
               </TouchableOpacity>
             ))}
           </>

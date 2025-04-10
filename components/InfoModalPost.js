@@ -27,7 +27,7 @@ const InfoModalPost = ({ visible, onClose }) => {
 
           {/* Descripción */}
           <Text style={styles.modalText}>
-            En esta pantalla encontrarás es articulo que seleccionaste
+            En esta pantalla encontrarás el articulo que seleccionaste
             anteriormente, si el articulo tiene mas de una imagen o video, lo
             podrá observar usando el carrusel. Además en caso de que este
             articulo tenga un documento, podrá descargarlo.
