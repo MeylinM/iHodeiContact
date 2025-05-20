@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
+import { View, Text, TouchableOpacity, Image, Linking, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styles from "../style/Styles"; // Importamos los estilos desde la carpeta styles
 import FooterSocial from "../components/FooterSocial";
@@ -90,8 +90,11 @@ const HodeiContact = () => {
         </Text>
       </View>
 
-      {/* Cuadrícula de Tarjetas */}
-      <View style={styles.grid}>
+      {/* Cuadrícula de Tarjetas con Scroll */}
+      <ScrollView
+        contentContainerStyle={styles.grid}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Tarjeta de Contacto */}
         <TouchableOpacity
           style={[
@@ -171,7 +174,7 @@ const HodeiContact = () => {
             style={[styles.icon_image]}
           />
         </TouchableOpacity>
-      </View>
+      </ScrollView>
 
       {/* Footer Redes Sociales */}
       <FooterSocial />
